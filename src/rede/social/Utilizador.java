@@ -15,9 +15,18 @@ import java.util.Scanner;
  */
 public class Utilizador {
     private StringBuilder senha, username;
-    private String email, id;
+    private String email, id, dataNasc;
     private ArrayList<Utilizador> seguidores, seguindo;
-    private LocalDate dataNasc;
+    private LocalDate dataCriac;
+
+    public LocalDate getDataCriac() {
+        return dataCriac;
+    }
+
+    public void setDataCriac(LocalDate dataCriac) {
+        this.dataCriac = dataCriac;
+    }
+    
     
     public StringBuilder getSenha() {
         return senha;
@@ -43,7 +52,7 @@ public class Utilizador {
         return seguindo;
     }
 
-    public LocalDate getDataNasc() {
+    public String getDataNasc() {
         return dataNasc;
     }
 
@@ -71,7 +80,20 @@ public class Utilizador {
         this.seguindo = seguindo;
     }
 
-    public void setDataNasc(LocalDate dataNasc) {
+    public void setDataNasc(String dataNasc) {
         this.dataNasc = dataNasc;
     }
+
+    public Utilizador(StringBuilder senha, StringBuilder username, String email, String id, String dataNasc) {
+        this.senha = senha;
+        this.username = username;
+        this.email = email;
+        this.id = id;
+        this.seguidores = new ArrayList<>();
+        this.seguindo = new ArrayList<>();
+        this.dataNasc = dataNasc;
+        this.dataCriac = LocalDate.now();
+    }
+    
+    
 }
