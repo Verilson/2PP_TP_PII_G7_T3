@@ -47,12 +47,25 @@ public class Menu {
     public static void iniciarSessao() {
         System.out.println("Iniciando sessão...");       
     }
+    
+    public static void menuRedeSocial() {
+        int opcao;
+
+        do {
+            motrarMenuRedeSocial();
+            opcao = lerOpcao();
+
+            executarOpcaoMenuRedeSocial(opcao);
+
+        } while (opcao != 4);
+    }
     public static void motrarMenuRedeSocial() {
 
         System.out.println("===== MENU REDE SOCIAL =====");
-        System.out.println("1. Chat");
-        System.out.println("2. Página inicial");
+        System.out.println("1. Página inicial");
+        System.out.println("2. Chat");
         System.out.println("3. Definições");
+        System.out.println("4. Terminar sessão");
 
     }
     
@@ -64,24 +77,26 @@ public class Menu {
             case 2 -> chat();
 
             case 3 -> definicoes();
+            
+            case 4 -> System.out.println("Terminando Sessão...");
 
             default -> System.out.println("Opção inválida!");
         }
     }
 
-    private static void paginaInicial() {
+    public static void paginaInicial() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    private static void chat() {
+    public static void chat() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    private static void definicoes() {
+    public static void definicoes() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    private static void criarConta() {
+    public static void criarConta() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     

@@ -10,29 +10,21 @@ package rede.social;
  */
 public class REDESOCIAL {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-       int opcaoP, opcaoRS;
-       
-       do{
-           Menu.mostrarMenuPrincipal();
-           opcaoP = Menu.lerOpcao();
-           Menu.executarOpcaoMenuPrincipal(opcaoP);
-           
-           // Não concluido após iniciar sessão mostra o menu rede social
-           if(opcaoP == 2){
-              do{
-                   Menu.motrarMenuRedeSocial();
-                   opcaoRS = Menu.lerOpcao();
-                   Menu.executarOpcaoMenuRedeSocial(opcaoRS);
-                   
-              }while(opcaoRS != 4);
-           }
-       }while(opcaoP != 3);
+        int opcao;
+
+        do {
+            Menu.mostrarMenuPrincipal();
+            opcao = Menu.lerOpcao();
+
+            switch (opcao) {
+
+                case 1 -> Menu.criarConta();
+                case 2 -> Menu.iniciarSessao();
+                case 3 ->  System.out.println("Programa encerrado.");
+                default-> System.out.println("Opção inválida.");
+            }
+
+        } while (opcao != 3);
     }
-    
-    
-    
 }
