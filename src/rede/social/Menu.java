@@ -165,7 +165,10 @@ public class Menu {
     }
 
     utiActual.setSenha(novaSenha);
-
+    
+    // Gravar alteração no ficheiro
+    GestorUtilizadores.reescreverFicheiro(utilizadores);;
+    
     System.out.println("Senha alterada com sucesso!");
 }
    public static void mudarEmail() {
