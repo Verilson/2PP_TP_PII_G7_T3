@@ -23,6 +23,22 @@ public class Menu {
         System.out.println("2. Iniciar Sessão");
         System.out.println("3. Fechar programa");
 
+        System.out.println("Escolha uma opção: ");
+        int opcao = input.nextInt();
+        input.nextLine();
+        switch (opcao) {
+
+            case 1 -> criarConta(utilizadores);
+
+            case 2 -> iniciarSessao();
+
+            case 3 -> {
+                System.out.println("Programa encerrado.");
+                System.exit(0);
+            }
+
+            default -> System.out.println("Opção inválida!");
+        }
     }
      
     //Ler a opcao
@@ -32,20 +48,6 @@ public class Menu {
     input.nextLine(); // limpa o Enter
     return opcao;
 }
-    //Processar a opcao escolhida
-    public static void executarOpcaoMenuPrincipal(int opcao){
-        switch (opcao) {
-
-            case 1 -> criarConta(utilizadores);
-
-            case 2 -> iniciarSessao();
-
-            case 3 -> System.out.println("Programa encerrado.");
-
-            default -> System.out.println("Opção inválida!");
-        }
-    }
-    
     //Menu Rede Social
     public static void menuRedeSocial() {
         int opcao;
@@ -65,12 +67,22 @@ public class Menu {
                 case 4 -> {
                     utiActual = null;
                     System.out.println("Sessão terminada.");
+                    mostrarMenuPrincipal();
+                    
                 }
                 default -> System.out.println("Opção inválida!");
             }
         } while (opcao != 4);
     }
     
+    public static void paginaInicial() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public static void chat() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     public static void menuDefinicoes(){
         int opcao;
         do {
@@ -84,65 +96,12 @@ public class Menu {
                 case 1 -> perfil();
                 case 2 -> mudarSenha();
                 case 3 -> mudarEmail();
-                case 4 -> System.out.println("A voltar...");
+                case 4 -> menuRedeSocial();
                 default -> System.out.println("Opção inválida!");
             }
         } while (opcao != 4);
     }
     
-    public static void executarOpcaoMenuRedeSocial(int opcao){
-        switch (opcao) {
-
-            case 1 -> paginaInicial();
-
-            case 2 -> chat();
-
-            case 3 -> definicoes();
-            
-            case 4 -> System.out.println("Terminando Sessão...");
-
-            default -> System.out.println("Opção inválida!");
-        }
-    }
-    
-    public static void terminarSessao(){
-        System.out.println("Terminando Sessão!"); 
-    }
-    
-    public static void paginaInicial() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public static void chat() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    //Definições
-    public static void definicoes() {
-
-        System.out.println("===== DEFINIÇÕES =====");
-        System.out.println("1. PERFIL");
-        System.out.println("2. MUDAR SENHA");
-        System.out.println("3. MUDAR EMAIL");
-        System.out.println("4. Terminar sessão");
-
-    }
-    
-    public static void executarDefinicoes(int opcao){
-        switch (opcao) {
-
-            case 1 -> perfil();
-
-            case 2 -> mudarSenha();
-
-            case 3 -> mudarEmail();
-            
-            case 4 -> terminarSessao();
-
-            default -> System.out.println("Opção inválida!");
-        }
-    }
-
     //Perfil
     public static void perfil(){
         if (utiActual == null) {

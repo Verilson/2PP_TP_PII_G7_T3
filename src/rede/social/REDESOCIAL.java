@@ -48,11 +48,6 @@ public class REDESOCIAL {
                 System.out.println("Criacao: " + u.getDataCriac());
                 System.out.println("----------------");
             }*/
-        do {
-            Menu.mostrarMenuPrincipal();
-            opcao = Menu.lerOpcao();
-            Menu.executarOpcaoMenuPrincipal(opcao);
-
-        } while (opcao != 4 && opcao != 3);
+    Menu.mostrarMenuPrincipal();
     }
 }
