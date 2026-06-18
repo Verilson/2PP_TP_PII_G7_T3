@@ -188,7 +188,9 @@ public class Menu {
     }
 
     utiActual.setEmail(novoEmail);
-
+    // Gravar alteração no ficheiro
+    GestorUtilizadores.reescreverFicheiro(utilizadores);;
+    
     System.out.println("Email alterado com sucesso!");
 }
     

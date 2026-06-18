@@ -123,6 +123,21 @@ public class GestorUtilizadores {
     return null;
 }
     
+    public static Utilizador procurarPorId(int id){
+
+    ArrayList<Utilizador> lista = carregarUtilizadores();
+
+    for(Utilizador u : lista){
+
+        if(u.getId() == id){
+            return u;
+        }
+
+    }
+
+    return null;
+}
+    
     
 }
 
