@@ -1,16 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package rede.social;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-/**
- *
- * @author guga
- */
+
 public class Publicacao {
     private int remetenteID;
     private String conteudo;

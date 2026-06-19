@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
-import static rede.social.Utilizador.procurarUser;
+
 
 
 public class Menu {
@@ -89,7 +89,7 @@ public class Menu {
         do{
         switch(op){
             case 1 -> publicacao(); // funcao publicar !feita???
-             case 2-> Utilizador.procurarUser();  // procurar por perfil e exibir   !feita ; Bug, é necessário procurar 3x para mostrar resultado
+             case 2-> procuraruser();  // procurar por perfil e exibir   !feita ; Bug, é necessário procurar 3x para mostrar resultado
              case 3-> chat(); //!feita
              case 4-> menuRedeSocial();
              default -> System.out.println("Opção inválida!");
@@ -378,12 +378,140 @@ public class Menu {
     
     //Menu Redes Sociais Opcoes
  
-  
+  public static void procuraruser(){
+      
+  }
+ 
 
              public static void publicacao(){ 
 
 
             System.out.println("");
-    
+            
+             }
+            
+            // =================== MENU DE TESTES ===================
+
+public static void menuTestes(){
+    // Cria utilizadores de teste locais (não afeta a lista principal)
+    Utilizador u1 = new Utilizador("Senha@123", "alice", "alice@gmail.com", 901, "2000-01-01", LocalDate.now());
+    Utilizador u2 = new Utilizador("Senha@123", "bob",   "bob@gmail.com",   902, "1999-05-10", LocalDate.now());
+    Utilizador u3 = new Utilizador("Senha@123", "carlos","carlos@gmail.com",903, "1998-03-22", LocalDate.now());
+
+    ArrayList<Utilizador> testUsers = new ArrayList<>();
+    testUsers.add(u1);
+    testUsers.add(u2);
+    testUsers.add(u3);
+
+    int opcao;
+    do {
+        System.out.println("\n===== MENU DE TESTES — FOLLOW =====");
+        System.out.println("Utilizadores disponíveis: alice (901), bob (902), carlos (903)");
+        System.out.println("-----------------------------------");
+        System.out.println("1. Listar utilizadores de teste");
+        System.out.println("2. Follow (seguir alguém)");
+        System.out.println("3. Unfollow (deixar de seguir)");
+        System.out.println("4. Ver seguidores de um utilizador");
+        System.out.println("5. Ver quem um utilizador segue");
+        System.out.println("6. Voltar");
+        opcao = lerOpcao();
+
+        switch (opcao) {
+            case 1 -> listarTestUsers(testUsers);
+            case 2 -> testarFollow(testUsers);
+            case 3 -> testarUnfollow(testUsers);
+            case 4 -> testarShowFollow(testUsers);
+            case 5 -> testarShowFollowing(testUsers);
+            case 6 -> System.out.println("A voltar...");
+            default -> System.out.println("Opção inválida!");
+        }
+    } while (opcao != 6);
 }
+
+// ------ Auxiliar: encontrar utilizador por username ------
+private static Utilizador encontrarPorUsername(ArrayList<Utilizador> lista, String username) {
+    for (Utilizador u : lista) {
+        if (u.getUsername().equalsIgnoreCase(username)) return u;
+    }
+    return null;
+}
+
+// ------ Listar utilizadores de teste ------
+private static void listarTestUsers(ArrayList<Utilizador> lista) {
+    System.out.println("\n--- Utilizadores de teste ---");
+    for (Utilizador u : lista) {
+        System.out.println("ID: " + u.getId()
+            + " | Username: " + u.getUsername()
+            + " | Seguidores: " + u.getSeguidores().size()
+            + " | Seguindo: " + u.getSeguindo().size());
+    }
+}
+
+// ------ Testar follow ------
+private static void testarFollow(ArrayList<Utilizador> lista) {
+    System.out.print("Quem vai seguir? (username): ");
+    String quem = input.nextLine();
+
+    System.out.print("Vai seguir quem? (username): ");
+    String alvo = input.nextLine();
+
+    Utilizador seguidor = encontrarPorUsername(lista, quem);
+    Utilizador seguido  = encontrarPorUsername(lista, alvo);
+
+    if (seguidor == null || seguido == null) {
+        System.out.println("Utilizador não encontrado. Usa: alice, bob, carlos");
+        return;
+    }
+
+    boolean resultado = seguidor.follow(seguido);
+    System.out.println("Resultado: " + (resultado ? "SUCESSO" : "FALHOU"));
+}
+
+// ------ Testar unfollow ------
+private static void testarUnfollow(ArrayList<Utilizador> lista) {
+    System.out.print("Quem vai deixar de seguir? (username): ");
+    String quem = input.nextLine();
+
+    System.out.print("Deixar de seguir quem? (username): ");
+    String alvo = input.nextLine();
+
+    Utilizador seguidor = encontrarPorUsername(lista, quem);
+    Utilizador seguido  = encontrarPorUsername(lista, alvo);
+
+    if (seguidor == null || seguido == null) {
+        System.out.println("Utilizador não encontrado. Usa: alice, bob, carlos");
+        return;
+    }
+
+    boolean resultado = seguidor.unfollow(seguido);
+    System.out.println("Resultado: " + (resultado ? "SUCESSO" : "FALHOU"));
+}
+
+// ------ Testar showfollow ------
+private static void testarShowFollow(ArrayList<Utilizador> lista) {
+    System.out.print("Ver seguidores de quem? (username): ");
+    String nome = input.nextLine();
+
+    Utilizador u = encontrarPorUsername(lista, nome);
+    if (u == null) {
+        System.out.println("Utilizador não encontrado. Usa: alice, bob, carlos");
+        return;
+    }
+    u.showfollow();
+}
+
+// ------ Testar showfollowing ------
+private static void testarShowFollowing(ArrayList<Utilizador> lista) {
+    System.out.print("Ver quem segue quem? (username): ");
+    String nome = input.nextLine();
+
+    Utilizador u = encontrarPorUsername(lista, nome);
+    if (u == null) {
+        System.out.println("Utilizador não encontrado. Usa: alice, bob, carlos");
+        return;
+    }
+    u.showfollowing();
+}
+    
+
 }

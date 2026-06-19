@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package rede.social;
 
 import java.io.BufferedReader;
@@ -12,10 +9,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-/**
- *
- * @author guga
- */
+
 public class GestorUtilizadores {
     public  static void guardarUtilizador(Utilizador u){
 
@@ -123,20 +117,7 @@ public class GestorUtilizadores {
     return null;
 }
     
-    public static Utilizador procurarPorId(int id){
-
-    ArrayList<Utilizador> lista = carregarUtilizadores();
-
-    for(Utilizador u : lista){
-
-        if(u.getId() == id){
-            return u;
-        }
-
-    }
-
-    return null;
-}
+   
     
     
 }
